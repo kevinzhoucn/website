@@ -1,0 +1,65 @@
+<IfModule mod_rewrite.c>
+  # Enable mod_rewrite
+  RewriteEngine On
+
+  # Specify the folder in which the application resides.
+  # Use / if the application is in the root. 
+  RewriteBase /website
+  
+  # Redirect URLs ending in /index.php or /index.html to /
+  RewriteCond %{THE_REQUEST} ^GET\ .*/index\.(php|html?)\ HTTP
+  RewriteRule ^(.*)index\.(php|html?)$ $1 [R=301,L]  
+  
+  # Rewrite register customer pages
+  RewriteRule ^register-customer/?$ index.php?RegisterCustomer [L]
+  
+  # Rewrite account details pages
+  RewriteRule ^account-details/?$ index.php?AccountDetails [L]
+  
+  # Rewrite account profile pages
+  RewriteRule ^user/?(account-profile)?/?$ index.php?User&AccountProfile [L]
+  RewriteRule ^user/account-edit/?$ index.php?User&AccountEdit [L]
+  RewriteRule ^user/earning-status/?$ index.php?User&EarningStatus [L]
+  RewriteRule ^user/my-referrals/?$ index.php?User&MyReferrals [L]
+  RewriteRule ^user/ads/?$ index.php?User&ADS [L]
+  
+  # RewriteRule ^account-profile?$ index.php?AccountProfile [L]
+  
+  # Rewrite account edit pages
+  # RewriteRule ^account-edit?$ index.php?AccountEdit [L]  
+  # RewriteRule ^earning-status?$ index.php?EarningStatus [L]
+  # RewriteRule ^my-referrals?$ index.php?MyReferrals [L]
+
+  # Rewrite account details pages
+  #RewriteRule ^account-reset/?$ index.php?AccountReset [L]  
+  
+  # Rewrite page links.
+  RewriteRule ^page-([a-zA-Z]+)/?$ index.php?page=$1 [L]
+  
+  # Rewrite management links
+  RewriteRule ^page-([a-zA-Z]+)/action-([a-zA-Z]+)/step-([0-9]+)/?$ index.php?page=$1&action=$2&step=$3 [L]
+  
+  # Rewrite submit links
+  RewriteRule ^page-([a-zA-Z]+)/action-([a-zA-Z]+)/status-([a-zA-Z]+)/?$ index.php?page=$1&action=$2&status=$3 [L]
+  
+  # Rewrite view/edit links
+  RewriteRule ^page-([a-zA-Z]+)/action-([a-zA-Z]+)/item-([A-Z0-9]+)/?$ index.php?page=$1&action=$2&item=$3 [L]
+  
+  # Rewrite land home pages
+  #RewriteRule ^home-page/?$ index.php?HomePage [L]
+  
+  # Rewrite logout pages
+  RewriteRule ^logout/?$ index.php?Logout [L]
+  
+  # Rewrite logout pages
+  RewriteRule ^login/?$ index.php?Login [L]
+  
+  # Rewrite password reset
+  #RewriteRule ^password-reset/?$ index.php?PasswordReset [L]
+  
+  # Rewrite management
+  #RewriteRule ^management/?$ index.php?Management [L]  
+  
+  # Rewrite history
+  #RewriteRule ^history/?$ index.php?History [L]
+</IfModule>
