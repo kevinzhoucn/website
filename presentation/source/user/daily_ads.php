@@ -1,6 +1,6 @@
 <?php
 class DailyAds{
-	public $mTest = 'Test';
+	public $mTest = 'Test_02';
 	public function __construct(){
 		
 	}
